@@ -39,8 +39,19 @@ export class TodoResolver {
     return this.todoService.deleteTodo(id);
   }
 
-  @Query(() => Int, { name: 'count' })
-  countAll(): number {
-    return this.todoService.countAll();
+  //Agregations
+  @Query(() => Int, { name: 'total' })
+  totalTodos(): number {
+    return this.todoService.totalTodos;
+  }
+
+  @Query(() => Int, { name: 'completed' })
+  completedTodos(): number {
+    return this.todoService.completedTodos;
+  }
+
+  @Query(() => Int, { name: 'pending' })
+  pendingTodos(): number {
+    return this.todoService.pendingTodos;
   }
 }

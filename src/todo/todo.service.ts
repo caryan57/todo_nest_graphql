@@ -24,6 +24,18 @@ export class TodoService {
     }
   ]
 
+  get totalTodos(): number {
+    return this.todos.length;
+  }
+
+  get completedTodos(): number {
+    return this.todos.filter(todo => todo.done).length;
+  }
+
+  get pendingTodos(): number {
+    return this.todos.filter(todo => todo.done === false).length;
+  }
+
   findAll(args: StatusArgs): Todo[] {
     const { status } = args;
 
@@ -43,7 +55,7 @@ export class TodoService {
   createTodo(createTodoInput: CreateTodoInput): Todo {
     const todo = new Todo();
     todo.description = createTodoInput.description;
-    todo.id = this.countAll() + 1;
+    todo.id = this.totalTodos + 1;
     todo.done = false;
 
     this.todos.push(todo);
@@ -70,9 +82,5 @@ export class TodoService {
     this.todos = this.todos.filter(todo => todo.id !== id);
 
     return true;
-  }
-
-  countAll(): number {
-    return this.todos.length;
   }
 }
