@@ -1,0 +1,34 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Todo {
+  id: Int!
+  description: String!
+  done: Boolean!
+}
+
+type Query {
+  hello: String!
+  randomNumber: Float!
+  randomNumberFromZeroTo(to: Int): Int!
+  todos: [Todo!]!
+  todo(id: Int!): Todo!
+  count: Int!
+}
+
+type Mutation {
+  create(createTodoInput: CreateTodoInput!): Todo!
+  update(updateTodoInput: UpdateTodoInput!): Todo!
+  delete(id: Int!): Boolean!
+}
+
+input CreateTodoInput {
+  description: String!
+}
+
+input UpdateTodoInput {
+  description: String
+  id: Int!
+  done: Boolean
+}
